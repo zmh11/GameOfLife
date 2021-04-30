@@ -17,9 +17,10 @@ public class Main{
       }
     }
     gen = sc.nextInt();
-    System.out.println(gen);
     sc.close();
-    grid.show();
+
+    //grid.show();
+    Life GameOfLife = new Life(grid);
 
   }
 }
