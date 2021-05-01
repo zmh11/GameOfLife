@@ -20,7 +20,7 @@ public class Main{
     sc.close();
 
     //grid.show();
-    Life GameOfLife = new Life(grid);
+    Life GameOfLife = new Life(grid, gen);
 
   }
 }

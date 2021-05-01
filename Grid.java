@@ -27,7 +27,6 @@ public class Grid {
       System.out.println();
     }
   }
-
   public void set( Grid newSet ){
     for( int i = 0; i <20; i++){
       for (int k=0; k< 20; k++){
@@ -36,6 +35,26 @@ public class Grid {
     }
   }
 
+  
+  public void nextGen( Grid curentGen, Grid neighbors){
+    for( int i = 0; i <20; i++){
+      for (int k=0; k< 20; k++){
+        if( curentGen.get(i, k) != 1 && neighbors.get(i, k) ==3 )
+          this.set(i, k, 1);
+        else if ( curentGen.get(i, k)==1 && neighbors.get(i, k) >= 4)
+          this.set(i,k,0);
+        else if (curentGen.get(i, k) ==1 &&neighbors.get(i, k) == 0)
+          this.set(i,k,1);
+        else if (curentGen.get(i, k) == 1 &&neighbors.get(i, k) == 2 || neighbors.get(i, k) == 3)
+          this.set(i, k, 1);
+        else 
+          this.set(i, k, 0);
+
+      }
+    }
+  }
+  
+  
   public void showNum(){
     for( int i = 0; i <20; i++){
       for (int k=0; k< 20; k++){
