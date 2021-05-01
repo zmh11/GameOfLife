@@ -5,8 +5,8 @@ public class Grid {
     grid = new int[20][20];
   }
 
-  public void set( int i, int k, int add){
-    grid[i][k] = add; 
+  public void set( int i, int k, int set){
+    grid[i][k] = set; 
   }
 
   public void add( int i, int k){
@@ -26,8 +26,25 @@ public class Grid {
       }
       System.out.println();
     }
-
   }
+
+  public void set( Grid newSet ){
+    for( int i = 0; i <20; i++){
+      for (int k=0; k< 20; k++){
+        this.set(i, k, newSet.get(i, k));
+      }
+    }
+  }
+
+  public void showNum(){
+    for( int i = 0; i <20; i++){
+      for (int k=0; k< 20; k++){
+      System.out.print(grid[i][k]);
+      }
+    System.out.println();
+    }
+  }
+
 
 
 }

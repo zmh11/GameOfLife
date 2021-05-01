@@ -8,22 +8,20 @@ public class Life {
     neighbors = new Grid();
     nextGen = new Grid();
   }
-  public Life(Grid firstGen){
+
+  public Life(Grid firstGen) throws InterruptedException{
     curentGen = new Grid();
     neighbors = new Grid();
     nextGen = new Grid();
-    set(firstGen, curentGen);
+    curentGen.set(firstGen);
+   Neighbors gen1 = new Neighbors(curentGen);
+   gen1.start();
+   gen1.t.join();
+
+   
+   
     curentGen.show();
+    System.out.println("  ");
+    gen1.neighbors.showNum();
   }
-
-  public void set( Grid newSet, Grid oldSet){
-    for( int i = 0; i <20; i++){
-      for (int k=0; k< 20; k++){
-        oldSet.set(i, k, newSet.get(i, k));
-      }
-    }
-  }
-
-
-
 }
