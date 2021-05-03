@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Life {
   Grid curentGen;
   Grid neighbors;
@@ -14,25 +16,31 @@ public class Life {
     curentGen = new Grid();
     neighbors = new Grid();
     nextGen = new Grid();
-    numGen = numGen;
-
     curentGen.set(firstGen);
-
+ 
+    // NV2
     for (int k = 0; k < numGen; k++){
-      Neighbors gen1 = new Neighbors(curentGen);
-      gen1.start();
-      gen1.t.join();
+      ArrayList<NeighborsV2> neighbor = new ArrayList<>();
+       neighbors = new Grid();
 
-      nextGen.nextGen(curentGen, gen1.neighbors);
+      for( int r = 0; r <20; r++){
+        for (int c=0; c< 20; c++){
+          neighbor.add(new NeighborsV2(curentGen, neighbors, r, c) );
+        }
+      }
+      for (int N = 0; N < 400; N++){
+        neighbor.get(N).start();
+      }
+      for (int N = 0; N < 400; N++){
+        neighbor.get(N).t.join();
+      }
+    
+      nextGen.nextGen(curentGen, neighbors);
       curentGen.set(nextGen);
-      System.out.println(k);
-      curentGen.show();
+      //System.out.println(k);
+      //curentGen.show();
     }
+    curentGen.show();
 
-   
-
-    //curentGen.show();
-    //System.out.println("  ");
-    //gen1.neighbors.showNum();
   }
 }
